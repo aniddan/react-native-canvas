@@ -28,7 +28,7 @@ const stylesheet = StyleSheet.create({
 
 @webviewTarget('canvas')
 @webviewProperties({width: 300, height: 150})
-@webviewMethods(['toDataURL'])
+@webviewMethods(['toDataURL', 'initFonts', 'addFont'])
 export default class Canvas extends Component {
 
   state = {
@@ -73,8 +73,11 @@ export default class Canvas extends Component {
       case '2d': {
         return this.context2D;
       }
+
+      default: {
+        return null;
+      }
     }
-    return null;
   };
 
   postMessage = async message => {
